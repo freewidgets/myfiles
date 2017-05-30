@@ -2,7 +2,7 @@
 <html>
     <head>
         <script src="https://js.jotform.com/JotFormCustomWidget.min.js"></script>
-        <style type="text/css">body{margin:0 !important;}</style>
+        <style type="text/css">body{margin:10px 0 !important;}</style>
     </head>
     <body>
         <div id="wrapper">
@@ -20,7 +20,8 @@
                 var autop = JFCustomWidget.getWidgetSetting('autoplay');
                 
                 audiosource.src = audiourl;
-                if (autop=="yes"){audiosource.setAttribute('autoplay', ''); }
+                if (autop=="Yes"){myplayer.setAttribute('autoplay', ''); }
+                
                 myplayer.load();
             });
         </script>    
