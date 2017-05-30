@@ -13,16 +13,15 @@
         </div>
     </body>
         <script type="text/javascript">
-            var player = document.getElementById('player');
-            //always subscribe to ready event and implement widget related code
-            //inside callback function , it is the best practice while developing widgets
+            var myplayer = document.getElementById('player');
             JFCustomWidget.subscribe("ready", function(){
                 var mp3Source = document.getElementsByTagName('source')[0].src;
                 var mp3URL = JFCustomWidget.getWidgetSetting('url');
                 var autoPlay = JFCustomWidget.getWidgetSetting('autoplay');
+                
                 mp3Source = mp3URL;
-                if (autoPlay=="yes"){source.setAttribute('autoplay', ''); }
-                player.load();
+                if (autoPlay=="yes"){mp3Source.setAttribute('autoplay', ''); }
+                myplayer.load();
             });
         </script>    
 </html>
