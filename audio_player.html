@@ -15,12 +15,12 @@
         <script type="text/javascript">
             var myplayer = document.getElementById('player');
             JFCustomWidget.subscribe("ready", function(){
-                var mp3Source = document.getElementsByTagName('source')[0].src;
-                var mp3URL = JFCustomWidget.getWidgetSetting('url');
-                var autoPlay = JFCustomWidget.getWidgetSetting('autoplay');
+                var audiosource = document.getElementsByTagName('source')[0];
+                var audiourl = JFCustomWidget.getWidgetSetting('url');
+                var autop = JFCustomWidget.getWidgetSetting('autoplay');
                 
-                mp3Source = mp3URL;
-                if (autoPlay=="yes"){mp3Source.setAttribute('autoplay', ''); }
+                audiosource.src = audiourl;
+                if (autop=="yes"){audiosource.setAttribute('autoplay', ''); }
                 myplayer.load();
             });
         </script>    
