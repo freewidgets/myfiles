@@ -57,9 +57,9 @@ var hours = JFCustomWidget.getWidgetSetting('hour');
 var minutes = JFCustomWidget.getWidgetSetting('minute');
 var message = JFCustomWidget.getWidgetSetting('message');
  var until = getNowEDT();
- until.setHours(hours,00,0,0); // 3PM current day
+ until.setHours(hours,minutes,0,0); // 3PM current day
  if(getNowEDT() >= until){
- until.setHours(hours,0,0,0); // 3PM next day
+ until.setHours(hours,minutes,0,0); // 3PM next day
  }
  return until;
  }
