@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+ <script type="text/javascript" src="https://js.jotform.com/JotFormCustomWidget.min.js"></script>
+<script type="text/javascript" src="cd/jquery-2.0.3.js"></script>
+<script src="js/jquery.plugin.min.js"></script>
+<script src="js/jquery.countdown.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css">
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+<style type="text/css">
+#timer p {
+    color: #000;
+    font-size: 16px;
+    text-align: center;
+    margin: 2px;
+}
+#timer {
+	font-family: 'Droid Serif', serif;
+    font-size: 24px;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: block;
+    background: transparent;
+    border-color: transparent;
+    color: #585858;
+}
+</style>
+</head>
+<body>
+<span id="timer">
+<p>Time's up!</p>
+<span>
+</div>
+</body>
+<script type="text/javascript">
+ jQuery(document).ready(function($) {
+ function serverTime() {
+ var time = null;
+ $.ajax({url: 'servertime.php',
+ async: false, dataType: 'text',
+ success: function(text) {
+ time = new Date();
+ },
+ error: function(http, message, exc) {
+ time = new Date();
+ }});
+ return time;
+ }
+ function getCountDown() {
+
+var hours = JFCustomWidget.getWidgetSetting('hour');
+var minutes = JFCustomWidget.getWidgetSetting('minute');
+var message = JFCustomWidget.getWidgetSetting('message');
+ var until = getNowEDT();
+ until.setHours(hours,00,0,0); // 3PM current day
+ if(getNowEDT() >= until){
+ until.setHours(hours,0,0,0); // 3PM next day
+ }
+ return until;
+ }
+ function getNowEDT() {
+ var now = new Date();
+ now.setMinutes(now.getMinutes() + now.getTimezoneOffset() - 4 * 60); // EDT is UTC-4
+ return now;
+ }
+ $('#timer').countdown({until: getCountDown(), compact: true, serverSync: serverTime, format: 'HMS', timezone: -4,
+ onExpiry: function() {
+ //$(this).countdown('option', {until: getCountDown()});
+
+  $('#timer').append("<p>"+message+"</p>");
+ }});
+ });
+
+</script>
+</html>
