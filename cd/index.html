@@ -68,7 +68,7 @@ var until = getNowEDT();
  now.setMinutes(now.getMinutes() + now.getTimezoneOffset() - 4 * 60); // EDT is UTC-4
  return now;
  }
- $('#timer').countdown({until: getCountDown(), compact: true, serverSync: serverTime, format: 'HMS', timezone: 0,
+ $('#timer').countdown({until: getCountDown(), compact: true, serverSync: serverTime, format: 'HMS', timezone: -4,
  onExpiry: function() {
  //$(this).countdown('option', {until: getCountDown()});
 
