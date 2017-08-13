@@ -41,8 +41,10 @@
  jQuery(document).ready(function($) {
  function serverTime() {
  var time = null;
- $.ajax({url: 'servertime.php',
- async: false, dataType: 'text',
+ $.ajax({
+ url: 'servertime.php',	 
+ async: true, 
+ dataType: 'text',
  success: function(text) {
  time = new Date();
  },
