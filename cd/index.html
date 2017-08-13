@@ -53,13 +53,13 @@
  }
  function getCountDown() {
 
-var hours = JFCustomWidget.getWidgetSetting('hour');
-var minutes = JFCustomWidget.getWidgetSetting('minute');
+var hour = JFCustomWidget.getWidgetSetting('hour');
+var minute = JFCustomWidget.getWidgetSetting('minute');
 var message = JFCustomWidget.getWidgetSetting('message');
- var until = getNowEDT();
- until.setHours(hours,minutes,0,0); // 3PM current day
+var until = getNowEDT();
+ until.setHours(hour,minute,0,0); // 3PM current day
  if(getNowEDT() >= until){
- until.setHours(hours,minutes,0,0); // 3PM next day
+ until.setHours(hour,minute,0,0); // 3PM next day
  }
  return until;
  }
@@ -68,7 +68,7 @@ var message = JFCustomWidget.getWidgetSetting('message');
  now.setMinutes(now.getMinutes() + now.getTimezoneOffset() - 4 * 60); // EDT is UTC-4
  return now;
  }
- $('#timer').countdown({until: getCountDown(), compact: true, serverSync: serverTime, format: 'HMS', timezone: -4,
+ $('#timer').countdown({until: getCountDown(), compact: true, serverSync: serverTime, format: 'HMS', timezone: 0,
  onExpiry: function() {
  //$(this).countdown('option', {until: getCountDown()});
 
