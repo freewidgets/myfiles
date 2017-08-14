@@ -81,7 +81,12 @@ $(function() {
          timezone: -4,
          onExpiry: function() {
          //$(this).countdown('option', {until: getCountDown()});
-          $('#timer').append("<p>"+message+"</p>"); }
+          $('#timer').append("<p>"+message+"</p>"); 
+          JFCustomWidget.requestFrameResize({
+          height: $('#timer').height() + 20
+        });
+
+      }
     });
     };
 
