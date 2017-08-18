@@ -3,97 +3,15 @@
 <head>
 <title></title>
  <script type="text/javascript" src="https://js.jotform.com/JotFormCustomWidget.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-<script src="js/jquery.plugin.min.js"></script>
-<script src="js/jquery.countdown.js"></script>
-<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+<link rel="stylesheet" type="text/css" href="css/custom.css"> 
+<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
-<style type="text/css">
-#timer p {
-    color: #e36355;
-    font-size: 22px;
-    text-align: center;
-    margin: 2px;
-    font-family: 'Share Tech Mono', monospace;
-}
-#timer {
-	font-family: 'Share Tech Mono', monospace;
-    font-size: 24px;
-    border-width: 1px;
-    border-radius: 5px;
-    padding: 2px;
-    text-align: center;
-    margin: 0 auto;
-    box-sizing: border-box;
-    display: block;
-    background: transparent;
-    border-color: transparent;
-    color: #e36355;
-}
-</style>
 </head>
 <body>
-<span id="timer">
-<span>
-</div>
+<div id="timer"></div>
 </body>
-<script type="text/javascript">
-$(function() {
-     function serverTime() {
-     var time = null;
-     $.ajax({
-     url: 'servertime.php',	 
-     async: true, 
-     dataType: 'text',
-     success: function(text) {
-     time = new Date();
-     },
-     error: function(http, message, exc) {
-     time = new Date();
-     }});
-     return time;
-     }
-
-     function getCountDown() {
-    var hour = JFCustomWidget.getWidgetSetting('hour');
-    var minute = JFCustomWidget.getWidgetSetting('minute');    
-     var until = getNowEDT();
-        until.setHours(hour,minute,0,0); // 3PM current day
-     if(getNowEDT() >= until){
-     until.setHours(hour,minute,0,0); // 3PM next day
-     }
-     return until;
-     }
-
-     function getNowEDT() {
-     var now = new Date();
-     now.setMinutes(now.getMinutes() + now.getTimezoneOffset() - 4 * 60); // EDT is UTC-4
-     return now;
-     }
-
-    function init() {
-    var message = JFCustomWidget.getWidgetSetting('message');
-    $('#timer').countdown({
-         until: getCountDown(), 
-         compact: true, 
-         serverSync: serverTime, 
-         format: 'HMS', 
-         timezone: -4,
-         onExpiry: function() {
-         //$(this).countdown('option', {until: getCountDown()});
-          $('#timer').append("<p>"+message+"</p>"); 
-          JFCustomWidget.requestFrameResize({
-          height: $('#timer').height() + 20
-        });
-
-      }
-    });
-    };
-
-    JFCustomWidget.subscribe('ready', function () {  
-        init();
-    });
- });
-
-</script>
+<script type="text/javascript" src="js/script.js"></script>
 </html>
