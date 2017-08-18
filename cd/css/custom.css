@@ -17,8 +17,9 @@
 }
 #timer .countdown-period{
     font-size:16px;
-        color: #fff;
-            padding-top: 6px;
+    color: #fff;
+    padding-top: 6px;
+    text-transform: uppercase;
 
 }
 #timer {
