@@ -1,0 +1,55 @@
+#timer span{
+    color: #fff;
+    font-size: 60px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    box-sizing: border-box;
+}
+#timer .countdown-row{
+    display: inline-block;
+    width: 306px;
+}
+#timer + p {
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 30px;
+    margin: 0;
+}
+#timer .countdown-period{
+    font-size:16px;
+        color: #fff;
+            padding-top: 6px;
+
+}
+#timer {
+	font-family: 'Share Tech Mono', monospace;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background: transparent;
+    border-color: transparent;
+    color: #e36355;
+}
+.countdown-amount{
+    background:#e36355;
+    padding:8px 6px;
+    border-radius:6px;
+    padding-bottom: 4px;
+}
+.countdown-row .countdown-section:before,
+.countdown-row .countdown-section + .countdown-section:before{
+    content: ":";
+    color: #fff;
+    position: absolute;
+    top:0;
+    right:-15px;
+}
+.countdown-row .countdown-section + .countdown-section+.countdown-section:before{
+    display:none;
+}
+.countdown-section{
+    position:relative;
+}
