@@ -12,8 +12,9 @@
 #timer + p {
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 20px;
+font-size: 24px;
     margin: 0;
+    color: #fff;
 }
 #timer .countdown-period{
     font-size:14px;
