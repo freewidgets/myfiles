@@ -40,6 +40,7 @@ $(function() {
          padZeroes: true,
          timezone: -4,
          timeSeparator: ':',
+         alwaysExpire: true,              
          onExpiry: function() {
          //$(this).countdown('option', {until: getCountDown()});
           $('#timer').after("<p>"+message+"</p>"); 
