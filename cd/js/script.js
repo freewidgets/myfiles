@@ -1,4 +1,7 @@
 $(function() {
+    var hour = JFCustomWidget.getWidgetSetting('hour');
+    var minute = JFCustomWidget.getWidgetSetting('minute');    
+    var message = JFCustomWidget.getWidgetSetting('message');   
      function serverTime() {
      var time = null;
      $.ajax({
@@ -15,9 +18,6 @@ $(function() {
      }
 
      function getCountDown() {
-    var hour = JFCustomWidget.getWidgetSetting('hour');
-    var minute = JFCustomWidget.getWidgetSetting('minute'); 
-        var message = JFCustomWidget.getWidgetSetting('message');   
      var until = getNowEDT();
         until.setHours(hour,minute,0,0); // 3PM current day
      if(getNowEDT() >= until){
@@ -33,7 +33,6 @@ $(function() {
      }
 
     function init() {
-
          $('#timer').countdown({
          until: getCountDown(), 
          serverSync: serverTime, 
