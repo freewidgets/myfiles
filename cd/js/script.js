@@ -18,18 +18,23 @@ $(function() {
      var hour = JFCustomWidget.getWidgetSetting('hour');
      var minute = JFCustomWidget.getWidgetSetting('minute');            
      var until = getNowEDT();
-     var calc =  (24 - until) + until;        
-     var final = until.setHours(calc,minute,0,0); // 3PM current day
-     //if(getNowEDT() >= calc){
-        //until.setHours(hour,minute,0,0); // 3PM next day
-     //}
-    // return final;
-      console.log(final);
+     var setHour = (until.getHours() + parseInt(hour));
+     var setMinute = (until.getMinutes() + parseInt(minute));
+     var setSecond = until.getSeconds();
+     console.log(setHour);
+     //var calc =  (24 - until) + until;        
+     until.setHours(setHour,minute,0,0); // 3PM current day
+     // if(getNowEDT() >= until){
+     //       until.setHours(hour,minute,0,0); // 3PM next day
+     //    }
+     console.log(until + "expiry");
+     return until;
      }
 
      function getNowEDT() {
      var now = new Date();
-     now.setMinutes(now.getMinutes() + now.getTimezoneOffset() - 4 * 60); // EDT is UTC-4
+         now.setMinutes(now.getMinutes() + now.getTimezoneOffset() - 4 * 60); // EDT is UTC-4
+     console.log(now + "time");
      return now;
      }
 
@@ -41,7 +46,6 @@ $(function() {
          format: 'HMS',          
          padZeroes: true,
          timezone: -4,
-         timeSeparator: ':',
          alwaysExpire: true,              
          onExpiry: function() {
          //$(this).countdown('option', {until: getCountDown()});
