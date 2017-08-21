@@ -23,7 +23,8 @@ $(function() {
      //if(getNowEDT() >= calc){
         //until.setHours(hour,minute,0,0); // 3PM next day
      //}
-     return final;
+    // return final;
+      console.log(final);
      }
 
      function getNowEDT() {
