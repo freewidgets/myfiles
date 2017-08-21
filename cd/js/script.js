@@ -18,10 +18,11 @@ $(function() {
     var hour = JFCustomWidget.getWidgetSetting('hour');
     var minute = JFCustomWidget.getWidgetSetting('minute');            
      var until = getNowEDT();
-        until.setHours(hour,minute,0,0); // 3PM current day
-     if(getNowEDT() >= until){
-        until.setHours(24,0,0,0); // 3PM next day
-     }
+        var calc =  (24 - until) + until;        
+        until.setHours(calc,minute,0,0); // 3PM current day
+     //if(getNowEDT() >= calc){
+        //until.setHours(hour,minute,0,0); // 3PM next day
+     //}
      return until;
      }
 
