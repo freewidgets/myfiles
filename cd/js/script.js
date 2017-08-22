@@ -23,7 +23,7 @@ $(function() {
      var setSecond = until.getSeconds();
      console.log(setHour);
      //var calc =  (24 - until) + until;        
-     until.setHours(setHour,minute,0,0); // 3PM current day
+     until.setHours(hour,minute,0,0); // 3PM current day
      // if(getNowEDT() >= until){
      //       until.setHours(hour,minute,0,0); // 3PM next day
      //    }
