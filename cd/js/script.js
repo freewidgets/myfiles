@@ -1,40 +1,50 @@
 $(function() {
      function serverTime() {
      var time = null;
-     $.ajax({
-     url: 'servertime.php',  
-     async: true, 
-     dataType: 'text',
+     $.ajax({url: 'servertime.php',
+     async: false, dataType: 'text',
      success: function(text) {
      time = new Date();
+     //console.log(time + "my time");
      },
      error: function(http, message, exc) {
      time = new Date();
      }});
      return time;
-     }
+    }
 
      function getCountDown() {
      var hour = JFCustomWidget.getWidgetSetting('hour');
-     var minute = JFCustomWidget.getWidgetSetting('minute');            
+     var minute = JFCustomWidget.getWidgetSetting('minute');          
+     var pHour = parseInt(hour);
+     var pMinute = parseInt(minute);
      var until = getNowEDT();
-     var setHour = (until.getHours() + parseInt(hour));
-     var setMinute = (until.getMinutes() + parseInt(minute));
-     var setSecond = until.getSeconds();
-     console.log(setHour);
+     console.log(until + " Today's date");
+     // var cTime = null;
+     // if (pHour>=24) {
+     //    cTime = pHour - 48; //negaive means expired
+     // } else {
+     //    cTime = pHour + 24;
+     // }
+     // console.log (cTime);
+     // var setHour = (until.getHours() + parseInt(hour));
+     // var setMinute = (until.getMinutes() + parseInt(minute));
+     // var setSecond = until.getSeconds();
+     //console.log(setHour);
      //var calc =  (24 - until) + until;        
-     until.setHours(hour,minute,0,0); // 3PM current day
-     // if(getNowEDT() >= until){
-     //       until.setHours(hour,minute,0,0); // 3PM next day
-     //    }
-     console.log(until + "expiry");
+     until.setHours(pHour,pMinute,0,0); 
+     if(getNowEDT() >= until){
+               until.setDate(until.getDate()-1);
+               until.setHours(pHour,pMinute,0,0);
+               console.log (until + "today > expiry");
+         }
+     console.log(until + " Expiration Date");
      return until;
      }
 
      function getNowEDT() {
      var now = new Date();
          now.setMinutes(now.getMinutes() + now.getTimezoneOffset() - 4 * 60); // EDT is UTC-4
-     console.log(now + "time");
      return now;
      }
 
@@ -58,7 +68,7 @@ $(function() {
     });
     };
 
-    JFCustomWidget.subscribe('ready', function () {  
+   // JFCustomWidget.subscribe('ready', function () {  
         init();
-    });
+   // });
  });
