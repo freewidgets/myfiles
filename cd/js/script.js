@@ -68,7 +68,7 @@ $(function() {
     });
     };
 
-   // JFCustomWidget.subscribe('ready', function () {  
+    JFCustomWidget.subscribe('ready', function () {  
         init();
-   // });
+    });
  });
